@@ -5,26 +5,35 @@ class BuiltWithFlutterBanner extends StatelessWidget {
   const BuiltWithFlutterBanner.positioned({
     Key? key,
     required this.bannerPosition,
+    required this.bannerColor,
+    this.elevation = 0,
+    this.shadowColor = const Color(0xCC000000),
   })  : isPositioned = true,
         super(key: key);
 
   const BuiltWithFlutterBanner({
     Key? key,
     required this.bannerPosition,
+    required this.bannerColor,
+    this.elevation = 0,
+    this.shadowColor = const Color(0xCC000000),
   })  : isPositioned = false,
         super(key: key);
 
   final bool isPositioned;
   final BannerPosition bannerPosition;
+  final Color bannerColor;
+  final double elevation;
+  final Color shadowColor;
 
   @override
   Widget build(BuildContext context) {
     if (isPositioned) {
       return PositionedBanner(
-        bannerPosition: BannerPosition.bottomLeft,
-        bannerColor: const Color(0xFF17191c),
-        elevation: 5,
-        shadowColor: Colors.black.withOpacity(0.8),
+        bannerPosition: bannerPosition,
+        bannerColor: bannerColor,
+        elevation: elevation,
+        shadowColor: shadowColor,
         child: _buildBannerContent(),
       );
     } else {
