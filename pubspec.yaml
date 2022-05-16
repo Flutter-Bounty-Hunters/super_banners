@@ -1,6 +1,7 @@
 name: super_banners
 description: Display angled banners on top of your content with super_banners!
 version: 0.0.1
+homepage: https://github.com/Flutter-Bounty-Hunters/super_banners
 
 environment:
   sdk: ">=2.15.0 <3.0.0"
