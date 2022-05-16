@@ -7,7 +7,7 @@ import 'banner.dart';
 /// A `PositionedBanner` must be the child of a `Stack`.
 ///
 /// If you'd like to display a banner within some other widget,
-/// consider using a [Banner] widget, which can have any parent.
+/// consider using a [CornerBanner] widget, which can have any parent.
 class PositionedBanner extends StatelessWidget {
   const PositionedBanner({
     Key? key,
@@ -18,7 +18,7 @@ class PositionedBanner extends StatelessWidget {
     required this.child,
   }) : super(key: key);
 
-  final BannerPosition bannerPosition;
+  final CornerBannerPosition bannerPosition;
   final Color bannerColor;
   final double elevation;
   final Color shadowColor;
@@ -27,22 +27,22 @@ class PositionedBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     late double? left, right, top, bottom;
-    if (bannerPosition == BannerPosition.topLeft) {
+    if (bannerPosition == CornerBannerPosition.topLeft) {
       left = 0;
       top = 0;
       right = null;
       bottom = null;
-    } else if (bannerPosition == BannerPosition.topRight) {
+    } else if (bannerPosition == CornerBannerPosition.topRight) {
       left = null;
       top = 0;
       right = 0;
       bottom = null;
-    } else if (bannerPosition == BannerPosition.bottomRight) {
+    } else if (bannerPosition == CornerBannerPosition.bottomRight) {
       left = null;
       top = null;
       right = 0;
       bottom = 0;
-    } else if (bannerPosition == BannerPosition.bottomLeft) {
+    } else if (bannerPosition == CornerBannerPosition.bottomLeft) {
       left = 0;
       top = null;
       right = null;
@@ -54,9 +54,11 @@ class PositionedBanner extends StatelessWidget {
       right: right,
       top: top,
       bottom: bottom,
-      child: Banner(
+      child: CornerBanner(
         bannerPosition: bannerPosition,
         bannerColor: bannerColor,
+        shadowColor: shadowColor,
+        elevation: elevation,
         child: child,
       ),
     );

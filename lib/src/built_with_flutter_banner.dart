@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart' hide Banner;
 import 'package:super_banners/super_banners.dart';
 
-class BuiltWithFlutterBanner extends StatelessWidget {
-  const BuiltWithFlutterBanner.positioned({
+/// A [CornerBanner] that displays "Built with" and the Flutter logo, to
+/// let the world know that your product is built with Flutter.
+class BuiltWithFlutterCornerBanner extends StatelessWidget {
+  const BuiltWithFlutterCornerBanner.positioned({
     Key? key,
     required this.bannerPosition,
     required this.bannerColor,
@@ -11,7 +13,7 @@ class BuiltWithFlutterBanner extends StatelessWidget {
   })  : isPositioned = true,
         super(key: key);
 
-  const BuiltWithFlutterBanner({
+  const BuiltWithFlutterCornerBanner({
     Key? key,
     required this.bannerPosition,
     required this.bannerColor,
@@ -21,7 +23,7 @@ class BuiltWithFlutterBanner extends StatelessWidget {
         super(key: key);
 
   final bool isPositioned;
-  final BannerPosition bannerPosition;
+  final CornerBannerPosition bannerPosition;
   final Color bannerColor;
   final double elevation;
   final Color shadowColor;
@@ -37,7 +39,7 @@ class BuiltWithFlutterBanner extends StatelessWidget {
         child: _buildBannerContent(),
       );
     } else {
-      return Banner(
+      return CornerBanner(
         bannerPosition: bannerPosition,
         bannerColor: const Color(0xFF17191c),
         elevation: 5,

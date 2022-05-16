@@ -10,7 +10,7 @@ void main() {
       "top left corner",
       'banner_top-left',
       const PositionedBanner(
-        bannerPosition: BannerPosition.topLeft,
+        bannerPosition: CornerBannerPosition.topLeft,
         bannerColor: Colors.blue,
         child: Text("Hello, World!"),
       ),
@@ -20,7 +20,7 @@ void main() {
       "top right corner",
       'banner_top-right',
       const PositionedBanner(
-        bannerPosition: BannerPosition.topRight,
+        bannerPosition: CornerBannerPosition.topRight,
         bannerColor: Colors.blue,
         child: Text("Hello, World!"),
       ),
@@ -30,7 +30,7 @@ void main() {
       "bottom right corner",
       'banner_bottom-right',
       const PositionedBanner(
-        bannerPosition: BannerPosition.bottomRight,
+        bannerPosition: CornerBannerPosition.bottomRight,
         bannerColor: Colors.blue,
         child: Text("Hello, World!"),
       ),
@@ -40,7 +40,7 @@ void main() {
       "bottom left corner",
       'banner_bottom-left',
       const PositionedBanner(
-        bannerPosition: BannerPosition.bottomLeft,
+        bannerPosition: CornerBannerPosition.bottomLeft,
         bannerColor: Colors.blue,
         child: Text("Hello, World!"),
       ),
@@ -51,8 +51,8 @@ void main() {
     _bannerGoldenTest(
       "top left",
       'built-with-flutter_top-left',
-      const BuiltWithFlutterBanner.positioned(
-        bannerPosition: BannerPosition.topLeft,
+      const BuiltWithFlutterCornerBanner.positioned(
+        bannerPosition: CornerBannerPosition.topLeft,
         bannerColor: Color(0xFF17191c),
         elevation: 5,
       ),
@@ -61,8 +61,8 @@ void main() {
     _bannerGoldenTest(
       "top right",
       'built-with-flutter_top-right',
-      const BuiltWithFlutterBanner.positioned(
-        bannerPosition: BannerPosition.topRight,
+      const BuiltWithFlutterCornerBanner.positioned(
+        bannerPosition: CornerBannerPosition.topRight,
         bannerColor: Color(0xFF17191c),
         elevation: 5,
       ),
@@ -71,8 +71,8 @@ void main() {
     _bannerGoldenTest(
       "bottom right",
       'built-with-flutter_bottom-right',
-      const BuiltWithFlutterBanner.positioned(
-        bannerPosition: BannerPosition.bottomRight,
+      const BuiltWithFlutterCornerBanner.positioned(
+        bannerPosition: CornerBannerPosition.bottomRight,
         bannerColor: Color(0xFF17191c),
         elevation: 5,
       ),
@@ -81,8 +81,8 @@ void main() {
     _bannerGoldenTest(
       "bottom left",
       'built-with-flutter_bottom-left',
-      const BuiltWithFlutterBanner.positioned(
-        bannerPosition: BannerPosition.bottomLeft,
+      const BuiltWithFlutterCornerBanner.positioned(
+        bannerPosition: CornerBannerPosition.bottomLeft,
         bannerColor: Color(0xFF17191c),
         elevation: 5,
       ),

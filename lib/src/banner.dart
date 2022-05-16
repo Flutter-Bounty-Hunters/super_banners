@@ -3,15 +3,16 @@ import 'dart:math';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-/// Displays a banner with the given [child] content.
+/// Displays a banner with the given [child] content in a given
+/// [bannerPosition] corner.
 ///
 /// The banner makes itself as thick as needed to fit the given [child].
 /// The banner also offsets itself from the corner far enough to fit
 /// all of the [child] on screen.
-class Banner extends SingleChildRenderObjectWidget {
-  const Banner({
+class CornerBanner extends SingleChildRenderObjectWidget {
+  const CornerBanner({
     Key? key,
-    this.bannerPosition = BannerPosition.topLeft,
+    this.bannerPosition = CornerBannerPosition.topLeft,
     required this.bannerColor,
     this.elevation = 0,
     this.shadowColor = const Color(0x44000000),
@@ -19,7 +20,7 @@ class Banner extends SingleChildRenderObjectWidget {
   }) : super(key: key, child: child);
 
   /// The position where the banner is displayed.
-  final BannerPosition bannerPosition;
+  final CornerBannerPosition bannerPosition;
 
   /// The color of the banner, which appears behind the [child] content.
   final Color bannerColor;
@@ -52,7 +53,7 @@ class Banner extends SingleChildRenderObjectWidget {
 
 class _RenderBanner extends RenderBox with RenderObjectWithChildMixin {
   _RenderBanner({
-    required BannerPosition bannerPosition,
+    required CornerBannerPosition bannerPosition,
     required Color bannerColor,
     required double elevation,
     required Color shadowColor,
@@ -61,8 +62,8 @@ class _RenderBanner extends RenderBox with RenderObjectWithChildMixin {
         _elevation = elevation,
         _shadowColor = shadowColor;
 
-  BannerPosition _bannerPosition;
-  set bannerPosition(BannerPosition newPosition) {
+  CornerBannerPosition _bannerPosition;
+  set bannerPosition(CornerBannerPosition newPosition) {
     if (newPosition != _bannerPosition) {
       _bannerPosition = newPosition;
       markNeedsPaint();
@@ -145,18 +146,18 @@ class _RenderBanner extends RenderBox with RenderObjectWithChildMixin {
   }
 }
 
-class BannerPosition {
-  static const BannerPosition topLeft = BannerPosition._(_Corner.topLeft);
-  static const BannerPosition topRight = BannerPosition._(_Corner.topRight);
-  static const BannerPosition bottomLeft = BannerPosition._(_Corner.bottomLeft);
-  static const BannerPosition bottomRight = BannerPosition._(_Corner.bottomRight);
+class CornerBannerPosition {
+  static const CornerBannerPosition topLeft = CornerBannerPosition._(Corner.topLeft);
+  static const CornerBannerPosition topRight = CornerBannerPosition._(Corner.topRight);
+  static const CornerBannerPosition bottomLeft = CornerBannerPosition._(Corner.bottomLeft);
+  static const CornerBannerPosition bottomRight = CornerBannerPosition._(Corner.bottomRight);
 
-  const BannerPosition._(_Corner corner) : _corner = corner;
+  const CornerBannerPosition._(Corner corner) : _corner = corner;
 
-  final _Corner _corner;
+  final Corner _corner;
 
   /// Creates the path for a banner that fits into the corner of
-  /// this [BannerPosition].
+  /// this [CornerBannerPosition].
   ///
   /// [bannerBoundingBoxTopLeft] is the global screen-space offset for the top
   /// left corner of the banner's bounding box.
@@ -169,7 +170,7 @@ class BannerPosition {
 
     late Path relativePath;
     switch (_corner) {
-      case _Corner.topLeft:
+      case Corner.topLeft:
         relativePath = Path()
           ..moveTo(0, distanceToNearEdge)
           ..lineTo(distanceToNearEdge, 0)
@@ -177,7 +178,7 @@ class BannerPosition {
           ..lineTo(0, distanceToFarEdge)
           ..close();
         break;
-      case _Corner.topRight:
+      case Corner.topRight:
         relativePath = Path()
           ..moveTo(0, 0)
           ..lineTo(distanceToFarEdge - distanceToNearEdge, 0)
@@ -185,7 +186,7 @@ class BannerPosition {
           ..lineTo(distanceToFarEdge, distanceToFarEdge)
           ..close();
         break;
-      case _Corner.bottomLeft:
+      case Corner.bottomLeft:
         relativePath = Path()
           ..moveTo(0, 0)
           ..lineTo(distanceToFarEdge, distanceToFarEdge)
@@ -193,7 +194,7 @@ class BannerPosition {
           ..lineTo(0, distanceToFarEdge - distanceToNearEdge)
           ..close();
         break;
-      case _Corner.bottomRight:
+      case Corner.bottomRight:
         relativePath = Path()
           ..moveTo(0, distanceToFarEdge)
           ..lineTo(distanceToFarEdge, 0)
@@ -213,22 +214,22 @@ class BannerPosition {
   void positionCanvasToDrawContent(Canvas canvas, Offset paintingOffset, Size contentSize) {
     final contentOrigin = _calculateContentOrigin(paintingOffset, contentSize);
     switch (_corner) {
-      case _Corner.topLeft:
+      case Corner.topLeft:
         canvas
           ..translate(contentOrigin.dx, contentOrigin.dy)
           ..rotate(-pi / 4);
         break;
-      case _Corner.topRight:
+      case Corner.topRight:
         canvas
           ..translate(contentOrigin.dx, contentOrigin.dy)
           ..rotate(pi / 4);
         break;
-      case _Corner.bottomLeft:
+      case Corner.bottomLeft:
         canvas
           ..translate(contentOrigin.dx, contentOrigin.dy)
           ..rotate(pi / 4);
         break;
-      case _Corner.bottomRight:
+      case Corner.bottomRight:
         canvas
           ..translate(contentOrigin.dx, contentOrigin.dy)
           ..rotate(-pi / 4);
@@ -240,29 +241,33 @@ class BannerPosition {
   /// drawing the content such that (0,0) in the content space corresponds
   /// to the top-left corner of the content in the global screen space.
   Offset _calculateContentOrigin(Offset paintingOffset, Size contentSize) {
+    late Offset relativeOrigin;
     switch (_corner) {
-      case _Corner.topLeft:
-        return Offset(0, calculateDistanceToNearBannerEdge(contentSize));
-      case _Corner.topRight:
-        return Offset(
-          paintingOffset.dx +
-              (calculateDistanceToFarBannerEdge(contentSize) - calculateDistanceToNearBannerEdge(contentSize)),
+      case Corner.topLeft:
+        relativeOrigin = Offset(0, calculateDistanceToNearBannerEdge(contentSize));
+        break;
+      case Corner.topRight:
+        relativeOrigin = Offset(
+          (calculateDistanceToFarBannerEdge(contentSize) - calculateDistanceToNearBannerEdge(contentSize)),
           0,
         );
-      case _Corner.bottomLeft:
+        break;
+      case Corner.bottomLeft:
         final leftBottomBannerCorner =
             Offset(0, calculateDistanceToFarBannerEdge(contentSize) - calculateDistanceToNearBannerEdge(contentSize));
-        final relativeOrigin =
+        relativeOrigin =
             leftBottomBannerCorner + Offset(contentSize.height * sin(pi / 4), -contentSize.height * sin(pi / 4));
-        return relativeOrigin + paintingOffset;
-      case _Corner.bottomRight:
+        break;
+      case Corner.bottomRight:
         final distanceToNearEdge = calculateDistanceToNearBannerEdge(contentSize);
         final distanceToFarEdge = calculateDistanceToFarBannerEdge(contentSize);
         final bottomRightBannerCorner = Offset(distanceToFarEdge - distanceToNearEdge, distanceToFarEdge);
-        final relativeOrigin =
+        relativeOrigin =
             bottomRightBannerCorner + Offset(-contentSize.height * sin(pi / 4), -contentSize.height * sin(pi / 4));
-        return relativeOrigin + paintingOffset;
+        break;
     }
+
+    return relativeOrigin + paintingOffset;
   }
 
   /// Distance from the corner to the nearest edge of the banner along
@@ -280,7 +285,7 @@ class BannerPosition {
   }
 }
 
-enum _Corner {
+enum Corner {
   topLeft,
   topRight,
   bottomLeft,
