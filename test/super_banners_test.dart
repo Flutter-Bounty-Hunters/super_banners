@@ -54,7 +54,7 @@ void main() {
       const BuiltWithFlutterCornerBanner.positioned(
         bannerPosition: CornerBannerPosition.topLeft,
         bannerColor: Color(0xFF17191c),
-        elevation: 5,
+        elevation: 0,
       ),
     );
 
@@ -64,7 +64,7 @@ void main() {
       const BuiltWithFlutterCornerBanner.positioned(
         bannerPosition: CornerBannerPosition.topRight,
         bannerColor: Color(0xFF17191c),
-        elevation: 5,
+        elevation: 0,
       ),
     );
 
@@ -74,7 +74,7 @@ void main() {
       const BuiltWithFlutterCornerBanner.positioned(
         bannerPosition: CornerBannerPosition.bottomRight,
         bannerColor: Color(0xFF17191c),
-        elevation: 5,
+        elevation: 0,
       ),
     );
 
@@ -84,7 +84,7 @@ void main() {
       const BuiltWithFlutterCornerBanner.positioned(
         bannerPosition: CornerBannerPosition.bottomLeft,
         bannerColor: Color(0xFF17191c),
-        elevation: 5,
+        elevation: 0,
       ),
     );
   });

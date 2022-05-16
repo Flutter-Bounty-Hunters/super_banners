@@ -1,0 +1,23 @@
+name: Test project in a PR
+on: [pull_request]
+jobs:
+  # Test on a Mac because we have goldens, the goldens were generated
+  # on a Mac.
+  test_mac:
+    runs-on: macos-10.15
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      # Checkout the PR branch
+      - uses: actions/checkout@v2
+      # Setup Flutter environment
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      # Download all the packages that the app uses
+      - run: flutter pub get
+      # Run static analysis
+      - run: flutter analyze
+      # Run all tests
+      - run: flutter test
