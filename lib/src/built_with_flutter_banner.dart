@@ -31,7 +31,7 @@ class BuiltWithFlutterCornerBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isPositioned) {
-      return PositionedBanner(
+      return PositionedCornerBanner(
         bannerPosition: bannerPosition,
         bannerColor: bannerColor,
         elevation: elevation,

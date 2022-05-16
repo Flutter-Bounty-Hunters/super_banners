@@ -9,7 +9,7 @@ void main() {
     _bannerGoldenTest(
       "top left corner",
       'banner_top-left',
-      const PositionedBanner(
+      const PositionedCornerBanner(
         bannerPosition: CornerBannerPosition.topLeft,
         bannerColor: Colors.blue,
         child: Text("Hello, World!"),
@@ -19,7 +19,7 @@ void main() {
     _bannerGoldenTest(
       "top right corner",
       'banner_top-right',
-      const PositionedBanner(
+      const PositionedCornerBanner(
         bannerPosition: CornerBannerPosition.topRight,
         bannerColor: Colors.blue,
         child: Text("Hello, World!"),
@@ -29,7 +29,7 @@ void main() {
     _bannerGoldenTest(
       "bottom right corner",
       'banner_bottom-right',
-      const PositionedBanner(
+      const PositionedCornerBanner(
         bannerPosition: CornerBannerPosition.bottomRight,
         bannerColor: Colors.blue,
         child: Text("Hello, World!"),
@@ -39,7 +39,7 @@ void main() {
     _bannerGoldenTest(
       "bottom left corner",
       'banner_bottom-left',
-      const PositionedBanner(
+      const PositionedCornerBanner(
         bannerPosition: CornerBannerPosition.bottomLeft,
         bannerColor: Colors.blue,
         child: Text("Hello, World!"),

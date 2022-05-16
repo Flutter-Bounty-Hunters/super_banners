@@ -4,12 +4,12 @@ import 'banner.dart';
 
 /// A banner displayed in the desired corner of a `Stack`.
 ///
-/// A `PositionedBanner` must be the child of a `Stack`.
+/// A [PositionedCornerBanner] must be the child of a `Stack`.
 ///
 /// If you'd like to display a banner within some other widget,
 /// consider using a [CornerBanner] widget, which can have any parent.
-class PositionedBanner extends StatelessWidget {
-  const PositionedBanner({
+class PositionedCornerBanner extends StatelessWidget {
+  const PositionedCornerBanner({
     Key? key,
     required this.bannerPosition,
     required this.bannerColor,
