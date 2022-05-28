@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/7259036/168515013-e20fcb8f-5676-4fd6-b8e6-43ab712ef224.png" width="300" alt="Super Banners"><br>
+  <img src="https://user-images.githubusercontent.com/7259036/170845387-f2919d93-0478-4737-9dd9-59887071a96f.png" width="300" alt="Super Banners"><br>
   <span><b>Displays angled banners in a corner of your choice.</b></span><br><br>
 </p>
 
