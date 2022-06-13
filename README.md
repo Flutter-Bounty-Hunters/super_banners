@@ -4,7 +4,7 @@
 </p>
 
 
-> This project is a Flutter Bounty Hunters [proof-of-concept](http://policies.flutterbountyhunters.com/about/proof-of-concept). Want more banners? [Fund a milestone](http://policies.flutterbountyhunters.com/about/fund-a-milestone) today!
+> This project is a Flutter Bounty Hunters [proof-of-concept](https://policies.flutterbountyhunters.com/proof-of-concept). Want more banners? [Fund a milestone](https://policies.flutterbountyhunters.com/fund-milestone) today!
 
 ---
 
