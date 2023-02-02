@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart' hide Banner;
 
-import 'banner.dart';
+import 'corner_banner.dart';
 
 /// A banner displayed in the desired corner of a `Stack`.
 ///
