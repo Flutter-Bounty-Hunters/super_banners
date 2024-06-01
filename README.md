@@ -1,10 +1,12 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/7259036/170845387-f2919d93-0478-4737-9dd9-59887071a96f.png" width="300" alt="Super Banners"><br>
-  <span><b>Displays angled banners in a corner of your choice.</b></span><br><br>
+  <img src="https://github.com/Flutter-Bounty-Hunters/super_banners/assets/7259036/3e215e59-103e-4ed3-8925-97da4141c172" alt="Super Banners - Display angled banners in a corner of your choice">
 </p>
 
-
-> This project is a Flutter Bounty Hunters [proof-of-concept](https://policies.flutterbountyhunters.com/proof-of-concept). Want more banners? [Fund a milestone](https://policies.flutterbountyhunters.com/fund-milestone) today!
+<p align="center">
+  <a href="https://flutterbountyhunters.com" target="_blank">
+    <img src="https://github.com/Flutter-Bounty-Hunters/flutter_test_robots/assets/7259036/1b19720d-3dad-4ade-ac76-74313b67a898" alt="Built by the Flutter Bounty Hunters">
+  </a>
+</p>
 
 ---
 
