@@ -50,8 +50,8 @@ class BuiltWithFlutterCornerBanner extends StatelessWidget {
   }
 
   Widget _buildBannerContent() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+    return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 8.0),
       child: Material(
         // Material prevents ugly text display when there is no
         // Scaffold above this banner.
@@ -64,7 +64,7 @@ class BuiltWithFlutterCornerBanner extends StatelessWidget {
             Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   'BUILT\nWITH',
                   style: TextStyle(
@@ -75,8 +75,8 @@ class BuiltWithFlutterCornerBanner extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(width: 4),
-            const FlutterLogo(
+            SizedBox(width: 4),
+            FlutterLogo(
               size: 36,
             ),
           ],
